@@ -1,0 +1,79 @@
+:root {
+  /* Core palette - dark base, electric accents */
+  --bg-deep: #06040c;
+  --bg-mid: #0c0820;
+  --bg-card: rgba(18, 12, 32, 0.7);
+  --bg-glass: rgba(255, 255, 255, 0.04);
+  --bg-glass-hover: rgba(255, 255, 255, 0.07);
+  
+  --accent-pink: #e85a8a;
+  --accent-pink-dim: #d94d7a;
+  --accent-cyan: #5cc8d8;
+  --accent-amber: #e8a855;
+  --accent-purple: #a366d4;
+  
+  --glow-pink: rgba(232, 90, 138, 0.38);
+  --glow-cyan: rgba(92, 200, 216, 0.3);
+  --glow-amber: rgba(232, 168, 85, 0.28);
+  
+  --border-glass: rgba(255, 255, 255, 0.1);
+  --border-glow: rgba(255, 255, 255, 0.18);
+  --text-primary: #ffffff;
+  --text-secondary: #b8b0d0;
+  --text-muted: #7870a0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: 'Outfit', system-ui, sans-serif;
+  font-weight: 500;
+  color: var(--text-primary);
+  background: var(--bg-deep);
+  position: relative;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Animated gradient orbs - ambient background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: -50%;
+  background: 
+    radial-gradient(ellipse 80% 50% at 20% 20%, rgba(232, 90, 138, 0.11) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 80% at 80% 80%, rgba(92, 200, 216, 0.09) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 50% at 50% 50%, rgba(163, 102, 212, 0.06) 0%, transparent 60%);
+  animation: orbShift 20s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes orbShift {
+  0% { opacity: 1; transform: scale(1) rotate(0deg); }
+  100% { opacity: 0.9; transform: scale(1.1) rotate(5deg); }
+}
+
+/* Dot grid overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root {
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+  padding: 1.5rem;
+}
